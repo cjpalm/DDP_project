@@ -1,3 +1,5 @@
+library(markdown)
+
 shinyUI(
   pageWithSidebar(
     headerPanel("Predict your Iris type"),
