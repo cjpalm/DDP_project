@@ -13,19 +13,21 @@ predictedSpecies <- function(pw,sl,sw,pl)
 
 shinyServer(
   function(input, output) {
-      output$Sepal.Length <- renderPrint({paste("a", input$Sepal.Length)})
-      output$Sepal.Width <- renderText({input$Sepal.Width})
-      output$Petal.Length <- renderText({input$Petal.Length})
-      output$Petal.Width <- renderPrint({input$Petal.Width})
+      output$Sepal.Length <- renderText({paste0("Sepal Length: ", input$Sepal.Length,sep="")})
+      output$Sepal.Width <- renderText({paste0("Sepal Width: ",input$Sepal.Width,sep="")})
+      output$Petal.Length <- renderText({paste0("Petal Length: ",input$Petal.Length,sep="")})
+      output$Petal.Width <- renderText({paste0("Petal Width: ", input$Petal.Width,sep="")})
   #    predictSpecies <- predictedSpecies(input$Petal.Width,input$Sepal.Length, 
   #                     input$Sepal.Width,input$Petal.Length)
-      output$Species <- renderPrint({predictedSpecies(input$Petal.Width,input$Sepal.Length, 
-                                input$Sepal.Width,input$Petal.Length)})
+      output$Species <- renderText({paste0("Predicted Species: ",predictedSpecies(input$Petal.Width,input$Sepal.Length, 
+                                input$Sepal.Width,input$Petal.Length))})
 filename <- filename <- normalizePath(file.path('images','Iris_setosa.jpg'))
 #output$Species <- renderPrint(filename)
       output$image1 <- renderImage({    
-
-                    list(src = "images/Iris_setosa.jpg",
+                    ps <-predictedSpecies(input$Petal.Width,input$Sepal.Length, 
+                                          input$Sepal.Width,input$Petal.Length)
+                    filename <-paste("images/Iris_",ps,".jpg",sep="")
+                    list(src = filename,
                     contentType = 'image/jpeg',
                     alt = "Iris photo here")
       }, deleteFile = FALSE)
