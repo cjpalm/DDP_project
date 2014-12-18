@@ -2,6 +2,7 @@ library(UsingR)
 library(caret)
 data(iris)
 
+
 set.seed(1231)
 inTrain <- createDataPartition(y=iris$Species,p=0.60,list=FALSE)
 train <- iris[inTrain,]
