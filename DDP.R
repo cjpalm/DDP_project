@@ -1,4 +1,4 @@
-library(UsingR)
+selibrary(UsingR)
 library(caret)
 data(iris)
 
