@@ -14,3 +14,4 @@ confusionMatrix(predict(modFit,train),train$Species)
 confusionMatrix(predict(modFit,test),test$Species)
 confusionMatrix(predict(modFit2,train),train$Species)
 confusionMatrix(predict(modFit2,test),test$Species)
+confusionMatrix(predict(modFit,test),test$Species)$table
