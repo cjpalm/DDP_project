@@ -1,5 +1,7 @@
 library(UsingR)
 library(caret)
+library(randomForest)
+library(e1071)
 data(iris)
 
 set.seed(1231)
